@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow import keras 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = (r'D:\Datasets\Bird dataset\train')
+train_data_dir = (r'#_path to local directory where data contains')
 
 train_datagen = ImageDataGenerator(
       rescale=1./255,
@@ -13,9 +13,8 @@ train_datagen = ImageDataGenerator(
       width_shift_range=0.3,
       height_shift_range=0.3,
       horizontal_flip=True,
-      fill_mode='nearest',)
-      #validation_split=0.2)
-#validation_datagen = ImageDataGenerator(rescale=1./255)
+      fill_mode='nearest')
+
 train_generator = train_datagen.flow_from_directory(
         train_data_dir,
         target_size=(224,224),
@@ -30,7 +29,7 @@ for layer in model_3.layers:
 
 dummy = keras.Sequential([ 
       keras.layers.Dense(900, activation = 'relu'), 
-      keras.layers.Dense(300, activation= 'softmax')
+      keras.layers.Dense('n', activation= 'softmax')
 ])
 
 model_VGG = keras.Sequential([
@@ -46,4 +45,4 @@ model_VGG.compile (
 )
 
 
-model_VGG.fit(train_generator, epochs = 3, batch_size=10)        
+model_VGG.fit(train_generator, epochs = 5, batch_size=10)        
